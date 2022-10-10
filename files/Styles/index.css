@@ -1,0 +1,560 @@
+* {
+	box-sizing: border-box;
+	color: #dedcdc;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0%;
+	padding: 0%;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+	display: none;
+}
+
+.am-pic {
+	height: 50px;
+	width: 50px;
+	display: inline;
+}
+
+.arrow {
+	height: 20px;
+	width: 20px;
+}
+
+.bottom-container {
+	align-items: center;
+	background-color: #000000;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 0px 50px;
+}
+
+.bottom-header {
+	align-items: center;
+	display: flex;
+	height: 80px;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.bottom-sort-cont {
+	display: flex;
+	justify-content: space-evenly;
+	width: 300px;
+}
+
+.bottom-title > h2,
+.bottom-sort-cont > h3 {
+	font-weight: normal;
+}
+
+.card-container {
+	align-items: center;
+	display: flex;
+	gap: 50px;
+	height: 290px;
+	margin: 0px auto;
+	overflow-x: auto;
+	scroll-behavior: smooth;
+	width: fit-content;
+}
+
+.card-time,
+.card-date {
+	flex-basis: 15%;
+}
+
+.city {
+	background-color: #373737;
+	font-size: 20px;
+	height: 2em;
+	opacity: 80%;
+	width: 7em;
+}
+.citycards-container {
+	align-items: center;
+	display: flex;
+	height: 300px;
+	justify-content: space-evenly;
+}
+
+.city-icon {
+	height: 80px;
+	width: 80px;
+}
+
+.city-card {
+	background-color: #181818;
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	background-size: 165px;
+	border-radius: 3%;
+	box-shadow: 0px 0px 10px 3px grey;
+	display: flex;
+	flex-direction: column;
+	height: 250px;
+	margin: 0px 20px;
+	min-width: 16rem;
+	padding-left: 10px;
+}
+
+.city-card:hover {
+	-ms-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	box-shadow: 0px 0px 5px 5px whitesmoke;
+	transition-duration: 0.5s;
+	transform: scale(1.1);
+}
+
+.city-name {
+	flex-basis: 60%;
+}
+
+.city-time {
+	flex-basis: 60%;
+}
+
+.climatic-cont {
+	display: flex;
+	flex-basis: 20%;
+	height: 180px;
+	justify-content: space-around;
+	padding: 0%;
+}
+
+.continent-name {
+	flex-basis: 60%;
+	color: #fff461;
+}
+
+#continent-sort-button,
+#temperature-sort-button {
+	background-color: transparent;
+	border: none;
+}
+.display-input {
+	background-color: #2e2e2e;
+	border: none;
+	height: min-content;
+	opacity: 90%;
+	text-align: center;
+	width: 40px;
+}
+
+.header-icon {
+	height: 30px;
+	padding-bottom: 5px;
+	width: 30px;
+}
+
+.humi-preci-cont {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.humi-preci > p {
+	font-size: large;
+}
+
+.image-and-city-container {
+	align-content: space-between;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.image-city {
+	align-items: end;
+	display: flex;
+}
+
+.line {
+	font-size: large;
+	height: 20px;
+	justify-self: flex-end;
+}
+
+.mid-header {
+	align-items: center;
+	display: flex;
+	justify-content: space-around;
+	left: 0px;
+	position: sticky;
+}
+
+.mid-icons {
+	align-items: center;
+	display: flex;
+	justify-content: space-evenly;
+	min-width: 300px;
+}
+
+.mid-line {
+	font-size: large;
+	height: 70px;
+	justify-self: flex-end;
+}
+
+.middle-container {
+	background-color: black;
+	border-radius: 25px 25px 0px 0px;
+	display: flex;
+	flex-direction: column;
+	height: 380px;
+	justify-content: space-around;
+}
+
+.middle-title {
+	flex: 0.6;
+	font-weight: normal;
+	text-align: end;
+}
+
+.middle-title > h3 {
+	font-weight: normal;
+}
+
+.name-temp-cont {
+	align-items: center;
+	display: flex;
+	flex-basis: 20%;
+	gap: 5px;
+	width: 100%;
+}
+
+.preferential-weather-icon {
+	background-color: transparent;
+	border: none;
+}
+
+.scroll-left,
+.scroll-right {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	padding: 0px 10px;
+	position: sticky;
+}
+
+.scroll-left {
+	left: 0px;
+}
+
+.scroll-right {
+	right: 0px;
+}
+
+#scroll-left-button,
+#scroll-right-button {
+	background-color: #d0d0d0;
+	border-radius: 50%;
+	font-size: 40px;
+	height: 50px;
+	width: 50px;
+}
+
+#scroll-left-button > b,
+#scroll-right-button > b {
+	color: black;
+}
+
+.selected {
+	border-bottom: 3px solid #00c0f1;
+}
+
+.separator {
+	background-image: repeating-linear-gradient(
+		180deg,
+		#dedcdc,
+		#dedcdc 3px,
+		transparent 4px,
+		transparent 7px
+	);
+	height: 70px;
+	width: 1.5px;
+}
+
+.separator-cont {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.temperature-cont {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.temperature > p {
+	font-size: large;
+}
+
+.temp {
+	font-weight: normal;
+}
+
+.temp-icon {
+	height: 22px;
+}
+
+.tile {
+	background-color: #2e2e2e;
+	display: flex;
+	flex-flow: row wrap;
+	height: 80px;
+	padding: 10px;
+}
+
+.tile:hover {
+	-ms-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	box-shadow: 0px 0px 5px 10px skyblue;
+	transform: scale(1.1);
+	transition-duration: 1s;
+	z-index: 101;
+}
+
+.tile-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	grid-column-gap: 60px;
+	grid-row-gap: 30px;
+	width: 100%;
+}
+
+.tile-humidity,
+.tile-temp {
+	align-items: center;
+	display: flex;
+	flex-basis: 40%;
+	justify-content: end;
+}
+
+.tile-humidity > span {
+	font-size: 90%;
+}
+
+.time {
+	color: #ffe5b4;
+	font-size: 25px;
+	font-weight: normal;
+}
+
+.time-climate-cont {
+	display: flex;
+	flex-direction: column;
+	justify-content: baseline;
+}
+
+.time-cont {
+	display: inline-flex;
+	align-items: flex-end;
+}
+
+.time-date-cont {
+	align-items: flex-end;
+	display: flex;
+	flex-direction: column;
+}
+
+.timeline {
+	align-items: center;
+	display: flex;
+	flex-flow: column wrap;
+	height: 140px;
+	justify-content: space-between;
+	width: max-content;
+}
+
+.timeline-cont {
+	align-items: center;
+	display: flex;
+	flex-basis: 55%;
+	justify-content: space-between;
+}
+
+.top-section {
+	align-items: center;
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
+}
+
+.weather-icon {
+	height: 30px;
+	width: 30px;
+}
+
+.weather-info {
+	display: flex;
+	flex-basis: 15%;
+	font-size: 80%;
+	align-items: center;
+	justify-content: space-between;
+	width: 20%;
+}
+.weather-info-icon {
+	height: 20px;
+	width: 20px;
+}
+
+body {
+	background-image: url("../Assets/background.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+@media screen and (min-width: 888px) and (max-width: 1000px) {
+	.city-icon {
+		height: 60px;
+		width: 60px;
+	}
+
+	.humi-preci > h2 {
+		font-size: normal;
+	}
+
+	.humi-preci > p {
+		font-size: normal;
+	}
+
+	.image-and-city-container {
+		flex: auto;
+		font-size: normal;
+	}
+
+	.temperature > h2 {
+		font-size: normal;
+	}
+
+	.temperature > p {
+		font-size: normal;
+	}
+}
+@media screen and (min-width: 600px) and (max-width: 887px) {
+	.am-pic {
+		height: 35px;
+		width: 35px;
+	}
+
+	.bottom-title {
+		font-size: 90%;
+	}
+
+	.bottom-sort-cont {
+		font-size: 90%;
+		width: 260px;
+	}
+
+	.city-icon {
+		height: 50px;
+		width: 50px;
+	}
+
+	.cities {
+		height: 2em;
+		flex: auto;
+		font-size: 110%;
+		width: 6em;
+	}
+	.continent-name,
+	.city-time,
+	.tile-temp,
+	.tile-humidity {
+		font-size: 90%;
+	}
+	.humi-preci > h2 {
+		font-size: 100%;
+	}
+
+	.humi-preci > p {
+		font-size: 100%;
+	}
+
+	.image-and-city-container {
+		flex: auto;
+		font-size: normal;
+	}
+
+	.mid-icons {
+		min-width: 250px;
+	}
+
+	.mid-line {
+		height: 63px;
+	}
+
+	.separator {
+		height: 40px;
+		width: 1px;
+	}
+
+	.temperature > p {
+		font-size: 100%;
+	}
+
+	.temperature > h2 {
+		font-size: 100%;
+	}
+
+	.timeline > p {
+		font-size: 95%;
+	}
+
+	.time,
+	.date {
+		font-size: medium;
+	}
+
+	.weather-icon {
+		height: 20px;
+		width: 20px;
+	}
+	.weather-info-icon {
+		height: 15px;
+		width: 15px;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.arrow {
+		height: 15px;
+	}
+
+	.bottom-container {
+		padding: 0px 20px;
+	}
+	.bottom-title {
+		font-size: 78%;
+	}
+
+	.bottom-sort-cont {
+		font-size: 73%;
+	}
+
+	.card-container {
+		gap: 20px;
+	}
+
+	.city-card {
+		min-width: 200px;
+	}
+
+	.tile-container {
+		grid-template-columns: repeat(auto-fit, 280px);
+		justify-content: center;
+	}
+
+	.scroll-left,
+	.scroll-right {
+		width: fit-content;
+		padding: 0px;
+	}
+}

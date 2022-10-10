@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="Styles/index.css" />
+  <title>Weather App</title>
+</head>
+<body>
+  <section class="top-section">
+    <div class="image-and-city-container">
+      <div class="image-city">
+        <img src="./Assets/IconsForCities/anadyr.svg" class="city-icon" id="city-icon" />
+        <input
+            list="cities-list"
+            name="cities"
+            class="city"
+            id="city"
+            value="Anadyr"
+          />
+  
+
+          <datalist
+            id="cities-list"
+          >
+      </div>
+      <div class="time-date-cont">
+        <div class="time-cont">
+          <h2 class="time" id="time">10:10:<small>40</small></h2>
+          <img
+            src="Assets/GeneralImages&Icons/amState.svg"
+            class="am-pic"
+            id="am-pic"
+          />
+        </div>
+        <h3 class="date" id="date">26-Jul-2022</h3>
+      </div>
+      </div>
+
+    <div class="climatic-cont">
+      <div class="temperature-cont">
+        <div class="temperature">
+          <p>Temp&nbsp;&deg;C</p>
+          <h2 id="temperature-celsius">27&nbsp;&deg;C</h2>
+        </div>
+        <div class="temperature">
+          <p>Temp&nbsp;F</p>
+          <h2 id="temperature-fahrenheit">80&nbsp;F</h2>
+        </div>
+      </div>
+
+      <div class="separator-cont">
+        <div class="separator">
+        </div>
+        <div class="separator"></div>
+      </div>
+
+      <div class="humi-preci-cont">
+        <div class="humi-preci">
+          <p>Humidity</p>
+          <h2 id="humidity">25%</h2>
+        </div>
+        <div class="humi-preci">
+          <p>Precipitation</p>
+          <h2 id="precipitation">0%</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-cont">
+      <div class="timeline">
+        <p class="time-period">NOW</p>
+        <h4 class="line">|</h4>
+        <img src="Assets\WeatherIcons\sunnyIcon.svg" class="weather-icon" />
+        <p class="time-temperature">7</p>
+      </div>
+      <div class="mid-line">
+        <h4>|</h4>
+      </div>
+
+      <div class="timeline">
+        <p class="time-period">11 am</p>
+        <h4 class="line">|</h4>
+        <img src="Assets\WeatherIcons\humidityIcon.svg" class="weather-icon" />
+        <p class="time-temperature">7</p>
+      </div>
+      <div class="mid-line">
+        <h4>|</h4>
+      </div>
+
+      <div class="timeline">
+        <p class="time-period">12 pm</p>
+        <h4 class="line">|</h4>
+        <img src="Assets\WeatherIcons\windyIcon.svg" class="weather-icon" />
+        <p class="time-temperature">7</p>
+      </div>
+      <div class="mid-line">
+        <h4>|</h4>
+      </div>
+
+      <div class="timeline">
+        <p class="time-period">1 pm</p>
+        <h4 class="line">|</h4>
+        <img src="Assets\WeatherIcons\cloudyIcon.svg" class="weather-icon" />
+        <p class="time-temperature">7</p>
+      </div>
+      <div class="mid-line">
+        <h4>|</h4>
+      </div>
+
+      <div class="timeline">
+        <p class="time-period">2 pm</p>
+        <h4 class="line">|</h4>
+        <img
+          src="Assets\WeatherIcons\rainyIconBlack.svg"
+          class="weather-icon"
+        />
+        <p class="time-temperature">7</p>
+      </div>
+      <div class="mid-line">
+        <h4>|</h4>
+      </div>
+
+      <div class="timeline">
+        <p class="time-period">3 pm</p>
+        <h4 class="line">|</h4>
+        <img
+          src="Assets\WeatherIcons\precipitationIcon.svg"
+          class="weather-icon"
+        />
+        <p class="time-temperature">7</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="middle-container">
+    <div class="mid-header">
+      <div class="middle-title">
+        <h3>Top Cities around World</h3>
+      </div>
+      <div class="mid-icons">
+        <button id="sun-button" class="preferential-weather-icon">
+          <img src="Assets\WeatherIcons\sunnyIcon.svg" id="sun-icon" class="header-icon" />
+        </button>
+        <button id="snow-button" class="preferential-weather-icon">
+          <img class="header-icon" src="Assets\WeatherIcons\snowflakeIcon.svg" id="snow-icon"/>
+        </button>
+        <button id="rain-button" class="preferential-weather-icon">
+          <img class="header-icon selected" src="Assets\WeatherIcons\rainyIcon.svg" id="rain-icon"/>
+        </button>
+        <span>
+          <label for="spinner-input">
+          Display top
+          </label>
+          <input
+            type="number"
+            min="3"
+            max="10"
+            value="3"
+            class="display-input"
+            id="spinner-input"
+            oninput="this.value=(parseInt(this.value)<3)?3:(parseInt(this.value)>10)?10:this.value"
+          />
+
+          cities
+        </span>
+      </div>
+    </div>
+    <div class="citycards-container">
+    <div class="scroll-left">
+
+      <button class="scroll-left-button" id="scroll-left-button">
+      <img src="Assets\GeneralImages&Icons\backwardArrow.svg" height="30" width="30">
+        </button>
+    </div>
+    <div class="card-container" id="card-container">
+    </div>
+    <div class="scroll-right">
+      <button class="scroll-right-button" id="scroll-right-button">
+       <img src="Assets\GeneralImages&Icons\forwardArrow.svg" height="30" width="30">
+      </button>
+    </div>
+    </div>
+  </section>
+  <section class="bottom-container">
+    <div class="bottom-header">
+      <div class="bottom-title">
+        <h2>Cities across continents at a Glance</h2>
+      </div>
+      <div class="bottom-sort-cont">
+        <h3>Continent Name</h3>
+        <button id="continent-sort-button"><img
+          class="arrow"
+          name="arrow-down"
+          src="Assets\GeneralImages&Icons\arrowDown.svg"
+        />
+      </button>
+        <h3>Temperature</h3>
+        <button id="temperature-sort-button"><img
+          class="arrow"
+          name="arrow-up"
+          src="Assets\GeneralImages&Icons\arrowUp.svg"
+        /></button>
+      </div>
+    </div>
+    <div class="tile-container" id="tile-container">  
+    </div> 
+  </section>
+
+  <script type="text/javascript" src="Scripts/apicall.js"></script>
+  <script type ="text/javascript" src="Scripts/weather_app.js">
+  </script>
+  
+</body>

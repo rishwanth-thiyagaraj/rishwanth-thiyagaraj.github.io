@@ -1,0 +1,14 @@
+{
+	"name": "rishwanth_weather-data",
+	"version": "1.0.0",
+	"description": "Data computational logic to forecast weather",
+	"main": "timeZone.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"weather"
+	],
+	"author": "Rishwanth Thiyagaraj",
+	"license": "ISC"
+}
