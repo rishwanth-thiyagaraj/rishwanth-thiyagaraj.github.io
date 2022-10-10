@@ -1,7 +1,29 @@
 {
-  "dependencies": {
-    "body-parser": "^1.20.0",
-    "express": "^4.18.1",
-    "rishwanth_weather-data": "^1.0.0"
-  }
+	"dependencies": {
+		"body-parser": "^1.20.0",
+		"express": "^4.18.1",
+		"rishwanth_weather-data": "^1.0.0"
+	},
+	"scripts": {
+		"start": "node server.js"
+	},
+	"name": "rishwanth-thiyagaraj.github.io",
+	"version": "1.0.0",
+	"main": "server.js",
+	"engines": {
+		"node": "16.x"
+	},
+	"devDependencies": {},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rishwanth-thiyagaraj/rishwanth-thiyagaraj.github.io.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/rishwanth-thiyagaraj/rishwanth-thiyagaraj.github.io/issues"
+	},
+	"homepage": "https://github.com/rishwanth-thiyagaraj/rishwanth-thiyagaraj.github.io#readme",
+	"description": ""
 }
