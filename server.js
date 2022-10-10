@@ -6,6 +6,7 @@ var path = require("path");
 const express = require("express");
 const bp = require("body-parser");
 const app = express();
+const hostname = "0.0.0.0";
 const port = process.env.port || 8888;
 const { fork } = require("child_process");
 
