@@ -1,5 +1,4 @@
 var weather_data = {};
-
 /**
  * Get the weather data of all the cities from the given url.
  *
@@ -58,21 +57,41 @@ async function getNextFiveHoursData(raw) {
  * @param {string} cityName the name of the city of which data is to be retrieved
  * @return {Object} the date and time of a particular city.
  */
-async function getDateandTimeData(cityName) {
+async function getDateandTimeData(cityName, flag) {
 	var requestOptions = {
 		method: "GET",
 		redirect: "follow",
 	};
 	try {
-		const date = await fetch(
-			`http://localhost:8888/city/?city=${cityName}`,
-			requestOptions
-		);
-		if (date.ok) {
+		if (flag == 0) {
+			let date = await fetch(
+				`http://localhost:8888/city/?city=${cityName}`,
+				requestOptions
+			);
+			if (date.ok) {
+				const data = await date.json();
+				console.log(data);
+				return data;
+			} else {
+				const errorMessage = await date.json();
+				alert(`${errorMessage.Error}\n\nSending default Anadyr's data`);
+				// Load default city's data when there is error in data fetching.
+				document.getElementById("city").value = "Anadyr";
+				selectedCity = "Anadyr";
+				date = await fetch(
+					"http://localhost:8888/city/?city=Anadyr",
+					requestOptions
+				);
+				const data = await date.json();
+				return data;
+			}
+		} else {
+			let date = await fetch(
+				"http://localhost:8888/city/?city=Anadyr",
+				requestOptions
+			);
 			const data = await date.json();
 			return data;
-		} else {
-			alert("Data not Fetched properly");
 		}
 	} catch {
 		(error) => console.log("error", error);
@@ -102,8 +121,8 @@ function convertArrayToObj(list, item) {
  * eg:
  * ['-13°C', '-11°C', '-11°C', '-13°C', '-14°C'](5)
  */
-async function getFutureTemperature(cityName) {
-	let dateTime = await getDateandTimeData(cityName);
+async function getFutureTemperature(cityName, flag) {
+	let dateTime = await getDateandTimeData(cityName, flag);
 	dateTime.hours = 6;
 	let nextFiveTemperatures = await getNextFiveHoursData(dateTime);
 	return nextFiveTemperatures.temperature;

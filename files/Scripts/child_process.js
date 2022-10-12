@@ -66,16 +66,16 @@ process.on("message", (msg) => {
 						"Argument missing in message body of request to get date and time data of one city!(/city)"
 					);
 				} else {
-					process.send(wd.timeForOneCity(msg.args.city));
+					process.send({
+						messageContent: "Success",
+						body: wd.timeForOneCity(msg.args.city),
+					});
 					process.exit();
 				}
 			} catch (error) {
-				//Logs the caught errors in logger.txt file for reference and debugging.
-				let date = new Date();
-				let errorMessage = "\n" + date.toDateString() + " " + error.message;
-				fs.appendFile("logger.txt", errorMessage, function () {
-					console.log(errorMessage);
-				});
+				//Send message as "Error" to make server respond with error message.
+				process.send({ messageContent: "Error", body: error.message });
+				process.exit();
 			}
 		} else {
 			throw new Error("Invalid Request");

@@ -4,9 +4,9 @@ var startTime = new Date(),
 	dayCheck = 3600000;
 var path = require("path");
 const express = require("express");
+const fs = require("fs");
 const bp = require("body-parser");
 const app = express();
-const hostname = "0.0.0.0";
 const port = process.env.port || 8888;
 const { fork } = require("child_process");
 
@@ -90,17 +90,31 @@ app.post("/hourly-forecast", (request, response) => {
 app.get("/city", (request, response) => {
 	const city = request.query.city;
 	let child_process = fork("./files/Scripts/child_process.js");
-	if (city) {
-		child_process.send({
-			messageContent: "GetTimeForCity",
-			args: { city: city },
-		});
-		child_process.on("message", (data) => response.json(data));
-	} else {
-		response.status(404);
-		response.json({
-			Error: "Not a valid Endpoint. Please check API Doc",
-		});
-	}
+	child_process.send({
+		messageContent: "GetTimeForCity",
+		args: { city: city },
+	});
+	child_process.on("message", (data) => {
+		// Respond with fetched data if there is no error in URL and request body.
+		if (data.messageContent != "Error") {
+			response.json(data.body);
+		} else {
+		/* Send error object as response with error message attached to prompt the user and
+		 * log the error for future reference.
+		 */
+			let date = new Date();
+			let errorMessage = "\n" + date.toDateString() + " " + data.body;
+			//Logs the caught errors in logger.txt file for reference and debugging.
+			fs.appendFile("logger.txt", errorMessage, function (error) {
+				if (error) console.log(error.message);
+			});
+			response.status(404);
+			response.json({
+				Error: "Not a valid Endpoint. Please check API Doc.\n" + data.body,
+			});
+		}
+	});
+	// child_process.on("Error on URL",(data)=>response.json({
+	// }))
 });
 app.listen(port);

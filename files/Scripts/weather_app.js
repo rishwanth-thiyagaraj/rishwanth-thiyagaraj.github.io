@@ -1,3 +1,5 @@
+let flag = 1;
+let selectedCity = document.getElementById("city").value; //selectedCity is converted to Lowercase to match the name in json file.
 class WeatherReport {
 	constructor(weather_data) {
 		this.weather_data = weather_data;
@@ -21,16 +23,15 @@ class WeatherReport {
 	 * @return {void} Nothing
 	 */
 	async updateTopSectionData() {
-		let interval;
-		let selectedCity = document.getElementById("city").value; //selectedCity is converted to Lowercase to match the name in json file.
 		//check if the input is not in the given list of cities in the json file
+		selectedCity = document.getElementById("city").value;
 		const currentCity = new CurrentCity();
 		if (!(selectedCity.toLowerCase() in weather_data)) {
 			currentCity.updateNilValuesForInvalidInput();
 			return;
 		}
-		currentCity.nextFiveHrs = await getFutureTemperature(selectedCity);
-
+		currentCity.nextFiveHrs = await getFutureTemperature(selectedCity, flag);
+		flag = 0;
 		let SelectedCity = selectedCity.toLowerCase();
 		currentCity.setProperties(SelectedCity);
 		currentCity.updateCityIcon();
@@ -57,18 +58,18 @@ class WeatherReport {
 			Object.keys(this.weather_data).length < 10
 				? Object.keys(this.weather_data).length
 				: 10;
-		let numberOfCards = spinner_value.value;
+		let numberOfCards = spinner_value.value == "" ? 0 : spinner_value.value;
 		if (parseInt(Object.values(this.weather_data)[1].temperature) > 29)
 			preferred_icon = "Assets/WeatherIcons/sunnyIcon.svg";
 		else if (parseInt(Object.values(this.weather_data)[1].temperature) <= 20)
 			preferred_icon = "Assets/WeatherIcons/rainyIcon.svg";
 		else preferred_icon = "Assets/WeatherIcons/snowflakeIcon.svg";
 		for (let city in this.weather_data) {
+			if (numberOfCards == 0) break;
 			let cityObj = new CurrentCity();
 			cityObj.setProperties(city);
 			cityObj.createCityCard(preferred_icon);
 			numberOfCards--;
-			if (numberOfCards == 0) break;
 		}
 	}
 	/**
@@ -159,7 +160,6 @@ class WeatherReport {
 			"precipitation"
 		);
 		sunnyCities = Object.fromEntries(sunnyCities);
-
 		rainyCities = Object.fromEntries(rainyCities);
 		coldCities = Object.fromEntries(coldCities);
 		let sunnyCitiesObject = new WeatherReport(sunnyCities);
@@ -249,7 +249,7 @@ class WeatherReport {
 	 *
 	 * @param {Array} citiesList The list of cities that is to be sorted
 	 * @param {string} criteria The property by which the citiesList has to be sorted
-	 * @return {*}
+	 * @return {Array} Sorted list
 	 */
 	sortCitiesBasedOnCriteria(citiesList, criteria) {
 		citiesList.sort(([, a], [, b]) => {
@@ -439,7 +439,7 @@ class CurrentCity {
 			let m = cityObject.addZero(selectedCity_date_time.getMinutes());
 			let s = cityObject.addZero(selectedCity_date_time.getSeconds());
 			currentCity_time[0].innerHTML =
-				h + ":" + m + ":" + "<small>" + s + "<small>";
+				h + ":" + m + ":" + '<small class="seconds">' + s + "</small>";
 
 			(function () {
 				let time_period = document.getElementsByClassName("time-period");
